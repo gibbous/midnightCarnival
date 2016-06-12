@@ -1,12 +1,12 @@
 // Initial array of creatures
-	var creatures = ['serpent', 'cerberus', 'manticore', 'satyr', 'dragon', 'mermaid', 'dalek', 'unicorn', 'harpy', "pegasus"];
+	var creatures = ['serpent', 'cerberus', 'manticore', 'satyr', 'dragon', 'mermaid', 'dalek', 'unicorn', 'harpy', 'pegasus'];
 
 	function creatureGifs(){
 		$('#creatures').empty();
 		var creature = $(this).attr('data-name');
 		var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + creature + "&limit=10&api_key=dc6zaTOxFJmzC";
 		
-		// Creates AJAX call for the specific movie being 
+		// Creates AJAX call for the button that was clicked
 		$.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 			console.log(response);
 
@@ -15,7 +15,7 @@
 				response.data[i]
 		
 			// Creates a div cage for the creature
-			var creatureDiv = $('<div class="creature">');
+			var creatureDiv = $('<div class="cage">');
 
 			// Retrieves the Rating Data
 			var rating = response.data[i].rating;
@@ -26,14 +26,18 @@
 			// Displays the rating
 			creatureDiv.append(p);
 			
-			// Creates an element to hold the still image 
+			// Creates an element to hold the  image 
 			var stillCreature = $('<img>').attr("src", response.data[i].images.fixed_height_still.url);
-			var animCreature = $('<img>').attr("data-animated", response.data[i].images.fixed_height.url);
+			stillCreature.attr("data-animate", response.data[i].images.fixed_height.url);
+			stillCreature.attr("data-still", response.data[i].images.fixed_height_still.url);
+			stillCreature.attr("data-state", "still");
+			stillCreature.addClass("animalImage");
+
 
 			// Appends the image
 			creatureDiv.append(stillCreature);
 
-			// Puts the new creature button at the end of the list of buttons
+			// loads images to the page
 			$('#creatures').append(creatureDiv);
 		};
 
@@ -84,6 +88,17 @@
 
 	$(document).on('click', '.creature', creatureGifs);
 
-
+	//toggle animation
+	  $('.animalImage').on('click', function(){
+	  	var state = $(this).attr('data-state'); 
+	  	 if ( state == 'still'){
+                $(this).attr('src', $(this).data('animate'));
+                $(this).attr('data-state', 'animate');
+            }else{
+                $(this).attr('src', $(this).data('still'));
+                $(this).attr('data-state', 'still');
+            }
+      });
 
 	creatureButtons();
+

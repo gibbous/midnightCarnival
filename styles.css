@@ -1,11 +1,35 @@
+body {
+	background:#7d6f92;
+}
+button, div, form, input {
+			margin: 10px;
+		}
+
 #creatureDiv{
+	border: dashed black 2px;
+	background:#cb676f;
 
 }
 
-#creature-form{
+.menu{
 	float: right;
+	border: dashed black 2px;
+	background:#c0cbdf;
 }
 
 #creatures{
 	float:left;
+	
+}
+.creature {
+	margin:10px;
+	border: dashed black 2px;
+	background:#efedf4;
+}
+
+.cage {
+	margin:10px;
+	border: dashed black 2px;
+	background:#dc9e61;
+	margin:auto;
 }
