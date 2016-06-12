@@ -83,13 +83,8 @@
 		
 		return false;
 	})
-
-
-
-	$(document).on('click', '.creature', creatureGifs);
-
-	//toggle animation
-	  $('.animalImage').on('click', function(){
+		//toggle animation
+	  function toggleAnimation(){
 	  	var state = $(this).attr('data-state'); 
 	  	 if ( state == 'still'){
                 $(this).attr('src', $(this).data('animate'));
@@ -98,7 +93,14 @@
                 $(this).attr('src', $(this).data('still'));
                 $(this).attr('data-state', 'still');
             }
-      });
+      };
+
+
+
+	$(document).on('click', '.creature', creatureGifs);
+	$(document).on('click', '.animalImage', toggleAnimation);
+	$('.animalImage').on('click', toggleAnimation());
+
 
 	creatureButtons();
 

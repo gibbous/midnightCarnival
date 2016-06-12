@@ -15,6 +15,7 @@ button, div, form, input {
 	float: right;
 	border: dashed black 2px;
 	background:#c0cbdf;
+	margin: auto;
 }
 
 #creatures{
