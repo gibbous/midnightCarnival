@@ -1,6 +1,6 @@
 # midnightCarnival
 
-Inspired by Mommy Fortuna's Midnight Carnival from the book and film The Last Unicorn
+Inspired by Mommy Fortuna's Midnight Carnival from the book and film *The Last Unicorn*
 
 Each button represents a magical creature in the carnival - clicking the button will call up gifs for that creature
 
